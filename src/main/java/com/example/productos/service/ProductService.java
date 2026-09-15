@@ -1,5 +1,6 @@
 package com.example.productos.service;
 
+import com.example.productos.exception.ProductNotFoundException;
 import com.example.productos.model.Product;
 import com.example.productos.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class ProductService {
 
     public Product buscarPorId(Long id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
+                .orElseThrow(() -> new ProductNotFoundException(id));
     }
 
     public Product guardar(Product producto) {
@@ -35,6 +36,9 @@ public class ProductService {
     }
 
     public void eliminar(Long id) {
+        if (!productRepository.existsById(id)) {
+            throw new ProductNotFoundException(id);
+        }
         productRepository.deleteById(id);
     }
 }
