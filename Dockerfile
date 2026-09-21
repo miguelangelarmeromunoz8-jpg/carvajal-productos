@@ -1,11 +1,9 @@
-# Etapa 1: Construir el proyecto con Maven
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Imagen final más liviana solo para ejecutar
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/productos-0.0.1-SNAPSHOT.jar app.jar
