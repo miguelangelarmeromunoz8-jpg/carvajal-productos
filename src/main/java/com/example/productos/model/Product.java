@@ -43,7 +43,7 @@ public class Product {
      * Imagen almacenada directamente en la base de datos.
      */
     @Lob
-    @Column(name = "image_data", columnDefinition = "LONGBLOB")
+    @Column(name = "image_data")
     private byte[] imageData;
 
     public Product() {
