@@ -27,13 +27,17 @@ public class Product {
 
     private Long idUser;
 
+    @Column(length = 500)
+    private String imageUrl;
+
     public Product() {}
 
-    public Product(String nameProduct, Long price, Integer stock, Long idUser) {
+    public Product(String nameProduct, Long price, Integer stock, Long idUser, String imageUrl) {
         this.nameProduct = nameProduct;
         this.price = price;
         this.stock = stock;
         this.idUser = idUser;
+        this.imageUrl = imageUrl;
     }
 
     public Long getIdProduct() { return idProduct; }
@@ -50,4 +54,7 @@ public class Product {
 
     public Long getIdUser() { return idUser; }
     public void setIdUser(Long idUser) { this.idUser = idUser; }
+
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
