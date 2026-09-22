@@ -27,16 +27,16 @@ public class Product {
 
     private Long idUser;
 
-    private String imagenUrl;   // NUEVO: ruta pública de la imagen, ej. "/uploads/abc123.jpg"
+    @Column(length = 500)
+    private String imageUrl;
 
     public Product() {}
 
-    public Product(String nameProduct, Long price, Integer stock, Long idUser, String imagenUrl) {
+    public Product(String nameProduct, Long price, Integer stock, Long idUser) {
         this.nameProduct = nameProduct;
         this.price = price;
         this.stock = stock;
         this.idUser = idUser;
-        this.imagenUrl = imagenUrl;
     }
 
     public Long getIdProduct() { return idProduct; }
@@ -54,6 +54,6 @@ public class Product {
     public Long getIdUser() { return idUser; }
     public void setIdUser(Long idUser) { this.idUser = idUser; }
 
-    public String getImagenUrl() { return imagenUrl; }
-    public void setImagenUrl(String imagenUrl) { this.imagenUrl = imagenUrl; }
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 }
