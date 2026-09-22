@@ -27,34 +27,96 @@ public class Product {
 
     private Long idUser;
 
-    @Column(length = 500)
-    private String imageUrl;
+    /*
+     * Nombre del archivo de imagen.
+     * Ejemplo: camiseta.jpg
+     */
+    private String imageName;
 
-    public Product() {}
+    /*
+     * Tipo MIME de la imagen.
+     * Ejemplo: image/jpeg
+     */
+    private String imageType;
 
-    public Product(String nameProduct, Long price, Integer stock, Long idUser, String imageUrl) {
+    /*
+     * Imagen almacenada directamente en la base de datos.
+     */
+    @Lob
+    @Column(name = "image_data", columnDefinition = "LONGBLOB")
+    private byte[] imageData;
+
+    public Product() {
+    }
+
+    public Product(String nameProduct, Long price, Integer stock, Long idUser) {
         this.nameProduct = nameProduct;
         this.price = price;
         this.stock = stock;
         this.idUser = idUser;
-        this.imageUrl = imageUrl;
     }
 
-    public Long getIdProduct() { return idProduct; }
-    public void setIdProduct(Long idProduct) { this.idProduct = idProduct; }
+    public Long getIdProduct() {
+        return idProduct;
+    }
 
-    public String getNameProduct() { return nameProduct; }
-    public void setNameProduct(String nameProduct) { this.nameProduct = nameProduct; }
+    public void setIdProduct(Long idProduct) {
+        this.idProduct = idProduct;
+    }
 
-    public Long getPrice() { return price; }
-    public void setPrice(Long price) { this.price = price; }
+    public String getNameProduct() {
+        return nameProduct;
+    }
 
-    public Integer getStock() { return stock; }
-    public void setStock(Integer stock) { this.stock = stock; }
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
 
-    public Long getIdUser() { return idUser; }
-    public void setIdUser(Long idUser) { this.idUser = idUser; }
+    public Long getPrice() {
+        return price;
+    }
 
-    public String getImageUrl() { return imageUrl; }
-    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
+    }
 }
